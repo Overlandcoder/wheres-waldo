@@ -33,3 +33,19 @@
   border-radius: 5px;
   box-shadow: 0px 0px 5px 5px green;
 }
+
+.Zoom {
+  animation: Zoom 0.5s ease-out 0s;
+}
+
+@keyframes Zoom {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
