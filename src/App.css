@@ -10,9 +10,12 @@
 .characters img {
   max-height: 6rem;
   width: 4rem;
+  overflow: hidden;
+}
+
+.characters > * {
   margin: 0.2rem;
   margin-right: 15px;
-  overflow: hidden;
 }
 
 .characters {
@@ -24,6 +27,9 @@
 
 .found {
   opacity: 50%;
-  outline: 5px solid green;
+}
+
+.green-border {
   border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px green;
 }

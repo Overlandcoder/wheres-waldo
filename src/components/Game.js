@@ -44,10 +44,18 @@ const Game = () => {
   return (
     <div className="game">
       <div className="characters">
-        <img src={waldo} className={foundWaldo ? "found" : ""}></img>
-        <img src={wizard} className={foundWizard ? "found" : ""}></img>
-        <img src={odlaw} className={foundOdlaw ? "found" : ""}></img>
-        <img src={wilma} className={foundWilma ? "found" : ""}></img>
+        <div className={foundWaldo ? "green-border" : ""}>
+          <img src={waldo} className={foundWaldo ? "found" : ""}></img>
+        </div>
+        <div className={foundWizard ? "green-border" : ""}>
+          <img src={wizard} className={foundWizard ? "found" : ""}></img>
+        </div>
+        <div className={foundOdlaw ? "green-border" : ""}>
+          <img src={odlaw} className={foundOdlaw ? "found" : ""}></img>
+        </div>
+        <div className={foundWilma ? "green-border" : ""}>
+          <img src={wilma} className={foundWilma ? "found" : ""}></img>
+        </div>
       </div>
       <img src={beachWallpaper} onClick={handleClick} className="wallpaper"></img>
     </div>
