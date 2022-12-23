@@ -8,8 +8,11 @@
 }
 
 .characters img {
-  max-width: 6rem;
   max-height: 6rem;
+  width: 4rem;
+  margin: 0.2rem;
+  margin-right: 15px;
+  overflow: hidden;
 }
 
 .characters {
@@ -17,4 +20,10 @@
   flex-direction: column;
   align-items: center;
   margin-top: 10rem;
+}
+
+.found {
+  opacity: 50%;
+  outline: 5px solid green;
+  border-radius: 5px;
 }
