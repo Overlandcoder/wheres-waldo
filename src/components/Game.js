@@ -32,25 +32,25 @@ const Game = () => {
 
   const checkWaldoCoords = (x, y) => {
     if ((x >= .721 * imgWidth && x <= .734 * imgWidth) &&
-        (y >= .366 * imgHeight && y <= .403 * imgHeight)) return true;
+      (y >= .366 * imgHeight && y <= .403 * imgHeight)) return true;
     return false;
   }
 
   const checkWilmaCoords = (x, y) => {
     if ((x >= .877 * imgWidth && x <= .887 * imgWidth) &&
-        (y >= .399 * imgHeight && y <= .418 * imgHeight)) return true;
+      (y >= .399 * imgHeight && y <= .418 * imgHeight)) return true;
     return false;
   }
 
   const checkOdlawCoords = (x, y) => {
     if ((x >= .211 * imgWidth && x <= .226 * imgWidth) &&
-        (y >= .344 * imgHeight && y <= .393 * imgHeight)) return true;
+      (y >= .344 * imgHeight && y <= .393 * imgHeight)) return true;
     return false;
   }
 
   const checkWizardCoords = (x, y) => {
     if ((x >= .373 * imgWidth && x <= .395 * imgWidth) &&
-        (y >= .343 * imgHeight && y <= .38 * imgHeight)) return true;
+      (y >= .343 * imgHeight && y <= .38 * imgHeight)) return true;
     return false;
   }
 
