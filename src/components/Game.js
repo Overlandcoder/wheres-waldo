@@ -4,6 +4,7 @@ import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
 import odlaw from "../images/odlaw.jpg";
 import wilma from "../images/wilma.jpg";
+import Stopwatch from "./Stopwatch";
 
 const Game = () => {
   const [foundWaldo, setFoundWaldo] = useState(false);
@@ -43,18 +44,21 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div className="characters">
-        <div className={foundWaldo ? "green-border Zoom" : ""}>
-          <img src={waldo} className={foundWaldo ? "found" : ""}></img>
-        </div>
-        <div className={foundWizard ? "green-border Zoom" : ""}>
-          <img src={wizard} className={foundWizard ? "found" : ""}></img>
-        </div>
-        <div className={foundOdlaw ? "green-border Zoom" : ""}>
-          <img src={odlaw} className={foundOdlaw ? "found" : ""}></img>
-        </div>
-        <div className={foundWilma ? "green-border Zoom" : ""}>
-          <img src={wilma} className={foundWilma ? "found" : ""}></img>
+      <div>
+        <Stopwatch />
+        <div className="characters">
+          <div className={foundWaldo ? "green-border Zoom" : ""}>
+            <img src={waldo} className={foundWaldo ? "found" : ""}></img>
+          </div>
+          <div className={foundWizard ? "green-border Zoom" : ""}>
+            <img src={wizard} className={foundWizard ? "found" : ""}></img>
+          </div>
+          <div className={foundOdlaw ? "green-border Zoom" : ""}>
+            <img src={odlaw} className={foundOdlaw ? "found" : ""}></img>
+          </div>
+          <div className={foundWilma ? "green-border Zoom" : ""}>
+            <img src={wilma} className={foundWilma ? "found" : ""}></img>
+          </div>
         </div>
       </div>
       <img src={beachWallpaper} onClick={handleClick} className="wallpaper"></img>
