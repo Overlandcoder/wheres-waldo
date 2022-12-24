@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Stopwatch = () => {
-  const [seconds, setSeconds] = useState(58);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

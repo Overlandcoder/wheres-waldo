@@ -56,8 +56,10 @@ const Game = () => {
 
   return (
     <div className="game">
-      <div>
-        <Stopwatch />
+      <div className="sidebar">
+        <div className="stopwatch">
+          <Stopwatch />
+        </div>
         <div className="characters">
           <div className={foundWaldo ? "green-border Zoom" : ""}>
             <img src={waldo} className={foundWaldo ? "found" : ""}></img>
