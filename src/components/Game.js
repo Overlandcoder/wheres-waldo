@@ -11,6 +11,14 @@ const Game = () => {
   const [foundWilma, setFoundWilma] = useState(false);
   const [foundOdlaw, setFoundOdlaw] = useState(false);
   const [foundWizard, setFoundWizard] = useState(false);
+  const [imgHeight, setImgHeight] = useState(0);
+  const [imgWidth, setImgWidth] = useState(0);
+
+  window.onload = () => {
+    const wallpaper = document.querySelector(".wallpaper");
+    setImgHeight(wallpaper.height);
+    setImgWidth(wallpaper.width);
+  }
 
   const handleClick = event => {
     const x = event.pageX;
@@ -23,22 +31,26 @@ const Game = () => {
   }
 
   const checkWaldoCoords = (x, y) => {
-    if ((x >= 1247 && x <= 1270) && (y >= 407 && y <= 448)) return true;
+    if ((x >= .721 * imgWidth && x <= .734 * imgWidth) &&
+        (y >= .366 * imgHeight && y <= .403 * imgHeight)) return true;
     return false;
   }
 
   const checkWilmaCoords = (x, y) => {
-    if ((x >= 1516 && x <= 1533) && (y >= 443 && y <= 464)) return true;
+    if ((x >= .877 * imgWidth && x <= .887 * imgWidth) &&
+        (y >= .399 * imgHeight && y <= .418 * imgHeight)) return true;
     return false;
   }
 
   const checkOdlawCoords = (x, y) => {
-    if ((x >= 366 && x <= 391) && (y >= 382 && y <= 436)) return true;
+    if ((x >= .211 * imgWidth && x <= .226 * imgWidth) &&
+        (y >= .344 * imgHeight && y <= .393 * imgHeight)) return true;
     return false;
   }
 
   const checkWizardCoords = (x, y) => {
-    if ((x >= 646 && x <= 683) && (y >= 381 && y <= 422)) return true;
+    if ((x >= .373 * imgWidth && x <= .395 * imgWidth) &&
+        (y >= .343 * imgHeight && y <= .38 * imgHeight)) return true;
     return false;
   }
 
