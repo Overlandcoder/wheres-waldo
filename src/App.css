@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .wallpaper {
@@ -91,9 +90,10 @@ nav {
   list-style: none;
   font-size: 1.2rem;
   font-weight: bold;
+  transition: 0.4s;
 }
 
-.nav-link li:after {
+.nav-link:after {
   display: block;
   content: '';
   border-bottom: solid 3px rgb(246, 231, 23);
@@ -101,6 +101,6 @@ nav {
   transition: transform 250ms ease-in-out;
 }
 
-.nav-link li:hover:after {
+.nav-link:hover:after {
   transform: scaleX(1);
 }
