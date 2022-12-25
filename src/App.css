@@ -19,7 +19,7 @@
 }
 
 .characters > * {
-  margin: 0.2rem;
+  margin: 0.8rem 0px;
 }
 
 .characters {
@@ -32,24 +32,28 @@
 }
 
 .found {
-  opacity: 50%;
+  opacity: 70%;
 }
 
 .green-border {
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 5px green;
+  box-shadow: 0px 0px 7px 2px rgb(49, 198, 49);
 }
 
 .Zoom {
-  animation: Zoom 0.5s ease-out 0s;
+  animation: Zoom 2s ease-out 0s;
 }
 
 @keyframes Zoom {
   0% {
     transform: scale(1, 1);
   }
+  20% {
+    box-shadow: 0px 0px 17px 5px rgb(49, 198, 49);
+  }
   50% {
     transform: scale(1.5);
+    box-shadow: 0px 0px 17px 5px rgb(49, 198, 49);
   }
   100% {
     transform: scale(1, 1);
@@ -63,6 +67,9 @@
   gap: 20px;
   margin-top: 2rem;
   margin-left: 45px;
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
 }
 
 .stopwatch {
@@ -82,6 +89,8 @@ nav {
   height: 60px;
   background-color: #2f4858;
   color: #81e4da;
+  position: sticky;
+  top: 0;
 }
 
 .nav-link {
@@ -123,7 +132,7 @@ nav {
   max-width: 30rem;
   border-radius: 15px;
   box-shadow: 0px 5px 15px 0px #2f4858;
-  transition: 0.25s;
+  transition: 0.2s;
 }
 
 .beach-link:hover {
