@@ -51,7 +51,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 2rem;
   align-items: center;
   margin-right: 15px;
 }
@@ -60,5 +60,22 @@
   margin-bottom: 25px;
   font-size: 1.5rem;
   padding-bottom: 10px;
-  border-bottom: 4px solid grey;
+  border-bottom: 4px solid #86bbd8;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10%;
+  align-items: center;
+  height: 60px;
+  background-color: #2f4858;
+  color: #81e4da;
+}
+
+.nav-link {
+  color: #81e4da;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.2rem;
 }
