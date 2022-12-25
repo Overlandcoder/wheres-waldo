@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import beachWallpaper from "../images/waldo_beach.jpg";
 import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
@@ -14,15 +14,25 @@ const Game = () => {
   const [imgHeight, setImgHeight] = useState(0);
   const [imgWidth, setImgWidth] = useState(0);
 
-  window.onload = () => {
-    const wallpaper = document.querySelector(".wallpaper");
-    setImgHeight(wallpaper.height);
-    setImgWidth(wallpaper.width);
-  }
+  useEffect(() => {
+    const handler = () => {
+      const wallpaper = document.querySelector(".wallpaper");
+      setImgHeight(wallpaper.height);
+      setImgWidth(wallpaper.width);
+    }
+
+    if (document.readyState === "complete") {
+      handler();
+    } else {
+      window.addEventListener('load', handler);
+      return () => document.removeEventListener('load', handler);
+    }
+  }, [imgHeight, imgWidth])
 
   const handleClick = event => {
     const x = event.pageX;
     const y = event.pageY;
+    console.log(imgHeight, imgWidth)
 
     if (!foundWaldo) setFoundWaldo(checkWaldoCoords(x, y));
     if (!foundWilma) setFoundWilma(checkWilmaCoords(x, y));
