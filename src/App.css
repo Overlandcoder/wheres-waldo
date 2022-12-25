@@ -104,3 +104,29 @@ nav {
 .nav-link:hover:after {
   transform: scaleX(1);
 }
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-heading {
+  color: #2f4858;
+  padding-bottom: 2px;
+  border-bottom: 3px solid rgb(246, 231, 23);
+}
+
+.beach-link {
+  margin-top: 1.5rem;
+  max-width: 30rem;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px 0px #2f4858;
+  transition: 0.25s;
+}
+
+.beach-link:hover {
+  box-shadow: 0px 15px 25px 0px #81e4da;
+  transform: scale(1.02);
+}
