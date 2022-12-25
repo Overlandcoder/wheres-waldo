@@ -11,28 +11,17 @@ const Game = () => {
   const [foundWilma, setFoundWilma] = useState(false);
   const [foundOdlaw, setFoundOdlaw] = useState(false);
   const [foundWizard, setFoundWizard] = useState(false);
-  const [imgHeight, setImgHeight] = useState(0);
-  const [imgWidth, setImgWidth] = useState(0);
+  let wallpaper;
+  let imgHeight;
+  let imgWidth;
 
-  useEffect(() => {
-    const handler = () => {
-      const wallpaper = document.querySelector(".wallpaper");
-      setImgHeight(wallpaper.height);
-      setImgWidth(wallpaper.width);
-    }
-
-    if (document.readyState === "complete") {
-      handler();
-    } else {
-      window.addEventListener('load', handler);
-      return () => document.removeEventListener('load', handler);
-    }
-  }, [imgHeight, imgWidth])
 
   const handleClick = event => {
     const x = event.pageX;
     const y = event.pageY;
-    console.log(imgHeight, imgWidth)
+    wallpaper = document.querySelector(".wallpaper");
+    imgHeight = wallpaper.height;
+    imgWidth = wallpaper.width;
 
     if (!foundWaldo) setFoundWaldo(checkWaldoCoords(x, y));
     if (!foundWilma) setFoundWilma(checkWilmaCoords(x, y));
