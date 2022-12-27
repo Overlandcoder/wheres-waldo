@@ -20,42 +20,13 @@ const Game = () => {
     wallpaper = document.querySelector(".wallpaper");
     imgHeight = wallpaper.height;
     imgWidth = wallpaper.width;
-    const x = Math.floor((event.pageX / originalWidth) * imgWidth);
-    const y = Math.floor((event.pageY / originalHeight) * imgHeight);
+    const x = event.pageX / originalWidth;
+    const y = event.pageY / originalHeight;
 
-    const response = await fetch(`http:localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`)
-    console.log(response)
+    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`);
     const data = await response.json();
-    console.log(data)
-    // then(response => {
-    //   response.json()
-    // })
-    // .then(data => setCharsFound({...charsFound, waldo: true}))
+    setCharsFound({...charsFound, [data["found"]]: true})
   }
-
-  // const checkWaldoCoords = (x, y) => {
-  //   if ((x >= .721 * imgWidth && x <= .734 * imgWidth) &&
-  //     (y >= .366 * imgHeight && y <= .403 * imgHeight)) return true;
-  //   return false;
-  // }
-
-  // const checkWilmaCoords = (x, y) => {
-  //   if ((x >= .877 * imgWidth && x <= .887 * imgWidth) &&
-  //     (y >= .399 * imgHeight && y <= .418 * imgHeight)) return true;
-  //   return false;
-  // }
-
-  // const checkOdlawCoords = (x, y) => {
-  //   if ((x >= .211 * imgWidth && x <= .226 * imgWidth) &&
-  //     (y >= .344 * imgHeight && y <= .393 * imgHeight)) return true;
-  //   return false;
-  // }
-
-  // const checkWizardCoords = (x, y) => {
-  //   if ((x >= .373 * imgWidth && x <= .395 * imgWidth) &&
-  //     (y >= .343 * imgHeight && y <= .38 * imgHeight)) return true;
-  //   return false;
-  // }
 
   return (
     <div className="game">
@@ -64,17 +35,17 @@ const Game = () => {
           <Stopwatch />
         </div>
         <div className="characters">
-          <div className={charsFound[waldo] ? "green-border Zoom" : ""}>
-            <img src={waldo} alt="waldo" className={charsFound[waldo] ? "found" : ""}></img>
+          <div className={charsFound.waldo ? "green-border Zoom" : ""}>
+            <img src={waldo} alt="waldo" className={charsFound.waldo ? "found" : ""}></img>
           </div>
-          <div className={charsFound[wizard] ? "green-border Zoom" : ""}>
-            <img src={wizard} alt="wizard" className={charsFound[wizard] ? "found" : ""}></img>
+          <div className={charsFound.wizard ? "green-border Zoom" : ""}>
+            <img src={wizard} alt="wizard" className={charsFound.wizard ? "found" : ""}></img>
           </div>
-          <div className={charsFound[odlaw] ? "green-border Zoom" : ""}>
-            <img src={odlaw} alt="odlaw" className={charsFound[odlaw] ? "found" : ""}></img>
+          <div className={charsFound.odlaw ? "green-border Zoom" : ""}>
+            <img src={odlaw} alt="odlaw" className={charsFound.odlaw ? "found" : ""}></img>
           </div>
-          <div className={charsFound[wilma] ? "green-border Zoom" : ""}>
-            <img src={wilma} alt="wilma" className={charsFound[wilma] ? "found" : ""}></img>
+          <div className={charsFound.wilma ? "green-border Zoom" : ""}>
+            <img src={wilma} alt="wilma" className={charsFound.wilma ? "found" : ""}></img>
           </div>
         </div>
       </div>
