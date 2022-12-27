@@ -10,8 +10,8 @@ const Game = () => {
   const [charsFound, setCharsFound] = useState({
     waldo: false, wizard: false, odlaw: false, wilma: false
   });
-  // const originalHeight = 1109;
-  // const originalWidth = 1728;
+  const [gameOver, setGameOver] = useState(false);
+
   let wallpaper;
   let imgHeight;
   let imgWidth;
@@ -20,12 +20,12 @@ const Game = () => {
     wallpaper = document.querySelector(".wallpaper");
     imgHeight = wallpaper.height;
     imgWidth = wallpaper.width;
-    const x = event.pageX / imgWidth;
-    const y = event.pageY / imgHeight;
+    const x = (event.pageX / imgWidth).toFixed(4);
+    const y = (event.pageY / imgHeight).toFixed(4);
 
     const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`);
     const data = await response.json();
-    setCharsFound({...charsFound, [data["found"]]: true})
+    setCharsFound({ ...charsFound, [data["found"]]: true })
   }
 
   return (
