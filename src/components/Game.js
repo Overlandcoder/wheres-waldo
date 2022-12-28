@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import beachWallpaper from "../images/waldo_beach.jpg";
 import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
 import odlaw from "../images/odlaw.jpg";
 import wilma from "../images/wilma.jpg";
-import Stopwatch from "./Stopwatch";
 
 const Game = () => {
   const [seconds, setSeconds] = useState(0);
@@ -12,6 +11,7 @@ const Game = () => {
     waldo: false, wizard: false, odlaw: false, wilma: false
   });
   const [gameOver, setGameOver] = useState(false);
+  const secondsRef = useRef(0);
   let wallpaper;
   let imgHeight;
   let imgWidth;
@@ -28,6 +28,7 @@ const Game = () => {
     if (!gameOver) {
       interval = setInterval(() => {
         setSeconds(seconds + 1);
+        secondsRef.current++;
       }, 1000)
     }
 
@@ -47,11 +48,15 @@ const Game = () => {
     if (gameOver) console.log("you won")
   }
 
+  const formattedTime = seconds => {
+    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  }
+
   return (
     <div className="game">
       <div className="sidebar">
         <div className="stopwatch">
-          <Stopwatch seconds={seconds} />
+          {formattedTime(seconds)}
         </div>
         <div className="characters">
           <div className={charsFound.waldo ? "green-border Zoom" : ""}>
@@ -67,7 +72,10 @@ const Game = () => {
             <img src={wilma} alt="wilma" className={charsFound.wilma ? "found" : ""}></img>
           </div>
         </div>
-        {gameOver ? <div>You won in <Stopwatch seconds={seconds} /></div> : null}
+        {gameOver ?
+                  <div>You won in {formattedTime(secondsRef.current)}</div>
+                  : null
+        }
       </div>
       <img src={beachWallpaper} onClick={handleClick} alt="beach wallpaper for a game of where's waldo" className="wallpaper"></img>
     </div>
