@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import beachWallpaper from "../images/waldo_beach.jpg";
 import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
@@ -11,10 +11,16 @@ const Game = () => {
     waldo: false, wizard: false, odlaw: false, wilma: false
   });
   const [gameOver, setGameOver] = useState(false);
-
   let wallpaper;
   let imgHeight;
   let imgWidth;
+
+  useEffect(() => {
+    const isGameOver = () => charsFound.waldo && charsFound.wizard && charsFound.odlaw && charsFound.wilma;
+    if (isGameOver()) setGameOver(true);
+
+    return () => setGameOver(false);
+  }, [charsFound.waldo, charsFound.wizard, charsFound.odlaw, charsFound.wilma])
 
   const handleClick = async event => {
     wallpaper = document.querySelector(".wallpaper");
@@ -25,12 +31,14 @@ const Game = () => {
 
     const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`);
     const data = await response.json();
-    setCharsFound({ ...charsFound, [data["found"]]: true })
+    if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
+    if (gameOver) console.log("you won")
   }
 
   return (
     <div className="game">
       <div className="sidebar">
+        {gameOver ? <span>You won in</span> : null}
         <div className="stopwatch">
           <Stopwatch />
         </div>
