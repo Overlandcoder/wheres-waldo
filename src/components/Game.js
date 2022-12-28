@@ -7,6 +7,7 @@ import wilma from "../images/wilma.jpg";
 import Stopwatch from "./Stopwatch";
 
 const Game = () => {
+  const [seconds, setSeconds] = useState(0);
   const [charsFound, setCharsFound] = useState({
     waldo: false, wizard: false, odlaw: false, wilma: false
   });
@@ -21,6 +22,17 @@ const Game = () => {
 
     return () => setGameOver(false);
   }, [charsFound.waldo, charsFound.wizard, charsFound.odlaw, charsFound.wilma])
+
+  useEffect(() => {
+    let interval;
+    if (!gameOver) {
+      interval = setInterval(() => {
+        setSeconds(seconds + 1);
+      }, 1000)
+    }
+
+    return () => clearInterval(interval);
+  })
 
   const handleClick = async event => {
     wallpaper = document.querySelector(".wallpaper");
@@ -38,9 +50,8 @@ const Game = () => {
   return (
     <div className="game">
       <div className="sidebar">
-        {gameOver ? <span>You won in</span> : null}
         <div className="stopwatch">
-          <Stopwatch />
+          <Stopwatch seconds={seconds} />
         </div>
         <div className="characters">
           <div className={charsFound.waldo ? "green-border Zoom" : ""}>
@@ -56,6 +67,7 @@ const Game = () => {
             <img src={wilma} alt="wilma" className={charsFound.wilma ? "found" : ""}></img>
           </div>
         </div>
+        {gameOver ? <div>You won in <Stopwatch seconds={seconds} /></div> : null}
       </div>
       <img src={beachWallpaper} onClick={handleClick} alt="beach wallpaper for a game of where's waldo" className="wallpaper"></img>
     </div>

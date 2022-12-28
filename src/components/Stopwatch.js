@@ -1,17 +1,7 @@
-import { useState, useEffect } from "react";
+const Stopwatch = props => {
+  const { seconds } = props;
 
-const Stopwatch = () => {
-  const [seconds, setSeconds] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds(seconds + 1);
-    }, 1000)
-
-    return () => clearInterval(interval);
-  })
-
-  return(
+  return (
     <div>
       {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
     </div>
