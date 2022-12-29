@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import beachWallpaper from "../images/waldo_beach.jpg";
 import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
 import odlaw from "../images/odlaw.jpg";
 import wilma from "../images/wilma.jpg";
+import Popup from "./Popup";
 
 const Game = () => {
   const [seconds, setSeconds] = useState(0);
@@ -11,7 +12,10 @@ const Game = () => {
     waldo: false, wizard: false, odlaw: false, wilma: false
   });
   const [gameOver, setGameOver] = useState(false);
-  const secondsRef = useRef(0);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [name, setName] = useState("");
+  let [scoreSubmitted, setScoreSubmitted] = useState(false);
+  // could maybe remove the 3 declarations below
   let wallpaper;
   let imgHeight;
   let imgWidth;
@@ -28,14 +32,30 @@ const Game = () => {
     if (!gameOver) {
       interval = setInterval(() => {
         setSeconds(seconds + 1);
-        secondsRef.current++;
       }, 1000)
     }
 
     return () => clearInterval(interval);
   })
 
+  useEffect(() => {
+    if (gameOver) setPopupOpen(true);
+
+    return () => setPopupOpen(false);
+  }, [gameOver, seconds])
+
+  const saveScore = async () => {
+    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}`,
+      { method: "post" });
+    const data = await response.json();
+    if (data["message"] === `Score saved for ${name}`){
+      setScoreSubmitted(true);
+      setName("");
+    }
+  }
+
   const handleClick = async event => {
+    if (gameOver) return;
     wallpaper = document.querySelector(".wallpaper");
     imgHeight = wallpaper.height;
     imgWidth = wallpaper.width;
@@ -45,19 +65,19 @@ const Game = () => {
     const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`);
     const data = await response.json();
     if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
-    if (gameOver) console.log("you won")
   }
 
   const formattedTime = seconds => {
     return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
   }
 
+  const togglePopup = () => setPopupOpen(!popupOpen);
+  const handleChange = event => setName(event.target.value);
+
   return (
     <div className="game">
       <div className="sidebar">
-        <div className="stopwatch">
-          {formattedTime(seconds)}
-        </div>
+        <div className="stopwatch">{formattedTime(seconds)}</div>
         <div className="characters">
           <div className={charsFound.waldo ? "green-border Zoom" : ""}>
             <img src={waldo} alt="waldo" className={charsFound.waldo ? "found" : ""}></img>
@@ -72,9 +92,14 @@ const Game = () => {
             <img src={wilma} alt="wilma" className={charsFound.wilma ? "found" : ""}></img>
           </div>
         </div>
-        {gameOver ?
-                  <div>You won in {formattedTime(secondsRef.current)}</div>
-                  : null
+        {gameOver && popupOpen ?
+          <Popup time={formattedTime(seconds)}
+            handleClose={togglePopup}
+            handleChange={handleChange}
+            saveScore={saveScore}
+            scoreSubmitted={scoreSubmitted}
+          />
+          : null
         }
       </div>
       <img src={beachWallpaper} onClick={handleClick} alt="beach wallpaper for a game of where's waldo" className="wallpaper"></img>
