@@ -179,7 +179,7 @@ button {
   border: none;
   padding: 2px 10px;
   border-radius: 5px;
-  background-color: grey;
+  background-color: rgb(170, 170, 170);
   color: #fff;
 }
 
@@ -208,7 +208,7 @@ form label {
   margin-right: 10px;
 }
 
-.submit-btn {
+.green-btn {
   width: 100%;
   margin-top: 15px;
   border: none;
@@ -218,6 +218,14 @@ form label {
   color: #fff;
 }
 
-.submit-btn:hover {
+.green-btn:hover {
   background-color: #1aba6f;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-prompt {
+  margin-bottom: 10px;
 }
