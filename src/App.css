@@ -119,6 +119,11 @@ nav {
   transform: scaleX(1);
 }
 
+nav ul {
+  display: flex;
+  gap: 30px;
+}
+
 .home {
   display: flex;
   flex-direction: column;
