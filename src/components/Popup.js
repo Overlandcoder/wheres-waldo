@@ -22,7 +22,7 @@ const Popup = props => {
             <div>
               <div className="text-center">Score submitted.</div>
               <Link className="" to="/leaderboard">
-                <button className="green-btn">Leaderboard</button>
+                <button className="green-btn">View Leaderboard</button>
               </Link>
             </div>
             :
