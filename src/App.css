@@ -121,7 +121,7 @@ nav {
 
 nav ul {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
 }
 
 .home {
@@ -166,7 +166,7 @@ nav ul {
   border-radius: 10px;
   border: 1px solid #999;
   overflow: auto;
-  box-shadow: 0px 5px 10px 0px #2f4858;
+  box-shadow: 0px 5px 10px 0px #4a4a4a;
   padding: 15px;
 }
 
@@ -233,4 +233,17 @@ form label {
 
 .form-prompt {
   margin-bottom: 10px;
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.score {
+  display: flex;
+  gap: 3rem;
 }
