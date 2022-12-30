@@ -15,10 +15,6 @@ const Game = () => {
   const [popupOpen, setPopupOpen] = useState(false);
   const [name, setName] = useState("");
   let [scoreSubmitted, setScoreSubmitted] = useState(false);
-  // could maybe remove the 3 declarations below
-  let wallpaper;
-  let imgHeight;
-  let imgWidth;
 
   useEffect(() => {
     const isGameOver = () => charsFound.waldo && charsFound.wizard && charsFound.odlaw && charsFound.wilma;
@@ -56,9 +52,9 @@ const Game = () => {
 
   const handleClick = async event => {
     if (gameOver) return;
-    wallpaper = document.querySelector(".wallpaper");
-    imgHeight = wallpaper.height;
-    imgWidth = wallpaper.width;
+    const wallpaper = document.querySelector(".wallpaper");
+    const imgHeight = wallpaper.height;
+    const imgWidth = wallpaper.width;
     const x = (event.pageX / imgWidth).toFixed(4);
     const y = (event.pageY / imgHeight).toFixed(4);
 
