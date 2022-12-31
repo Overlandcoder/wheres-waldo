@@ -4,7 +4,7 @@ const ScoreTable = props => {
 
   return (
     <table>
-      {scores.length > 0 ?
+      {scores && scores.length > 0 ?
         <tbody>
           <tr>
             <th>Rank</th>
