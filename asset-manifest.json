@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Overlandcoder/wheres_waldo/static/css/main.308e975d.css",
+    "main.js": "/Overlandcoder/wheres_waldo/static/js/main.a15617b4.js",
+    "static/media/ski_image.jpg": "/Overlandcoder/wheres_waldo/static/media/ski_image.80afb2b7450c2ce06eba.jpg",
+    "static/media/space_image.jpg": "/Overlandcoder/wheres_waldo/static/media/space_image.be704580b80ab6becf47.jpg",
+    "static/media/beach_image.jpg": "/Overlandcoder/wheres_waldo/static/media/beach_image.bddf9f162bcf91287287.jpg",
+    "static/media/wizard.jpg": "/Overlandcoder/wheres_waldo/static/media/wizard.4865007164171284cda9.jpg",
+    "static/media/wilma.jpg": "/Overlandcoder/wheres_waldo/static/media/wilma.2e31411397f43e5645ab.jpg",
+    "static/media/waldo.jpg": "/Overlandcoder/wheres_waldo/static/media/waldo.1c78bb268db142541e64.jpg",
+    "static/media/odlaw.jpg": "/Overlandcoder/wheres_waldo/static/media/odlaw.6d8cc58799d055c69801.jpg",
+    "index.html": "/Overlandcoder/wheres_waldo/index.html",
+    "main.308e975d.css.map": "/Overlandcoder/wheres_waldo/static/css/main.308e975d.css.map",
+    "main.a15617b4.js.map": "/Overlandcoder/wheres_waldo/static/js/main.a15617b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.308e975d.css",
+    "static/js/main.a15617b4.js"
+  ]
+}
