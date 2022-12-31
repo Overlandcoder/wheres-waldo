@@ -6,7 +6,8 @@ import odlaw from "../images/odlaw.jpg";
 import wilma from "../images/wilma.jpg";
 import Popup from "./Popup";
 
-const Game = () => {
+const Game = props => {
+  const { mapName, formattedTime } = props;
   const [seconds, setSeconds] = useState(0);
   const [charsFound, setCharsFound] = useState({
     waldo: false, wizard: false, odlaw: false, wilma: false
@@ -21,7 +22,7 @@ const Game = () => {
     if (isGameOver()) setGameOver(true);
 
     return () => setGameOver(false);
-  }, [charsFound.waldo, charsFound.wizard, charsFound.odlaw, charsFound.wilma])
+  }, [charsFound.waldo, charsFound.wizard, charsFound.odlaw, charsFound.wilma]);
 
   useEffect(() => {
     let interval;
@@ -32,19 +33,19 @@ const Game = () => {
     }
 
     return () => clearInterval(interval);
-  })
+  });
 
   useEffect(() => {
     if (gameOver) setPopupOpen(true);
 
     return () => setPopupOpen(false);
-  }, [gameOver, seconds])
+  }, [gameOver, seconds]);
 
   const saveScore = async () => {
-    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}`,
+    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}&map_name=${mapName}`,
       { method: "post" });
     const data = await response.json();
-    if (data["message"] === `Score saved for ${name}`){
+    if (data["message"] === `Score saved for ${name}`) {
       setScoreSubmitted(true);
       setName("");
     }
@@ -58,13 +59,9 @@ const Game = () => {
     const x = (event.pageX / imgWidth).toFixed(4);
     const y = (event.pageY / imgHeight).toFixed(4);
 
-    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map=beach`);
+    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map_name=${mapName}`);
     const data = await response.json();
     if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
-  }
-
-  const formattedTime = seconds => {
-    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
   }
 
   const togglePopup = () => setPopupOpen(!popupOpen);
