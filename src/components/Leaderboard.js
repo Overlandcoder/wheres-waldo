@@ -26,7 +26,9 @@ const Leaderboard = props => {
             <h3 className="map-name capitalize">{map.name}</h3>
             {topScores ?
               <ScoreTable scores={topScores[map.name]} formattedTime={formattedTime} />
-              : null}
+              :
+              <ScoreTable scores={null} formattedTime={formattedTime} />
+              }
           </div>
         )
       })}
