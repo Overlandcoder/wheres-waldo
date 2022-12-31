@@ -9,9 +9,9 @@ import spaceImage from "./images/space_image.jpg";
 import Leaderboard from "./components/Leaderboard";
 
 function App() {
-  const maps = [{ "name": "beach", "image": beachImage },
-  { "name": "ski", "image": skiImage },
-  { "name": "space", "image": spaceImage }];
+  const maps = [{ "name": "ski", "image": skiImage },
+                { "name": "beach", "image": beachImage },
+                { "name": "space", "image": spaceImage }];
 
   const formattedTime = seconds => {
     return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
