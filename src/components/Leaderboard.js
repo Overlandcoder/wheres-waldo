@@ -23,7 +23,7 @@ const Leaderboard = props => {
       {mapNames.map((mapName, index) => {
         return (
           <div key={index} className="text-center">
-            <h3 className="map-name">{mapName}</h3>
+            <h3 className="map-name capitalize">{mapName}</h3>
             <ScoreTable scores={topScores} formattedTime={formattedTime} />
           </div>
         )
