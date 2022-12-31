@@ -10,7 +10,7 @@ const ScoreTable = props => {
           <th>Name</th>
           <th>Time</th>
         </tr>
-        {scores ? scores.beach.map((score, index) => {
+        {scores ? scores.map((score, index) => {
           return (
             <tr key={index} className={even(index) ? "score even" : "score"}>
               <td>{index + 1}</td>

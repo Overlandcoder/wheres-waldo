@@ -9,22 +9,25 @@ const Leaderboard = props => {
     const getTopScores = async () => {
       const response = await fetch(`http://localhost:3000/api/top_scores?&amount=${topAmount}`);
       const data = await response.json();
+      console.log(data)
       setTopScores(data.top_scores);
     }
 
     getTopScores();
   }, []);
 
-  const { mapNames, formattedTime } = props;
+  const { maps, formattedTime } = props;
 
   return (
     <div className="leaderboard">
       <h1 className="border-bottom-yellow">Top {topAmount} Scores</h1>
-      {mapNames.map((mapName, index) => {
+      {maps.map((map, index) => {
         return (
           <div key={index} className="text-center">
-            <h3 className="map-name capitalize">{mapName}</h3>
-            <ScoreTable scores={topScores} formattedTime={formattedTime} />
+            <h3 className="map-name capitalize">{map.name}</h3>
+            {topScores ?
+              <ScoreTable scores={topScores[map.name]} formattedTime={formattedTime} />
+              : null}
           </div>
         )
       })}
