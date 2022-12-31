@@ -22,7 +22,7 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
-          <Route path="/" exact element={<Home maps={maps} />} />
+          <Route path="/wheres_waldo" exact element={<Home maps={maps} />} />
           {maps.map((map, index) => <Route path={`/wheres_waldo/${map.name}`} key={index} element={<Game map={map} formattedTime={formattedTime} />} />)}
           <Route path="/wheres_waldo/leaderboard" element={<Leaderboard maps={maps} formattedTime={formattedTime} />} />
         </Routes>
