@@ -9,7 +9,6 @@ const Leaderboard = props => {
     const getTopScores = async () => {
       const response = await fetch(`http://localhost:3000/api/top_scores?&amount=${topAmount}`);
       const data = await response.json();
-      console.log(data)
       setTopScores(data.top_scores);
     }
 

@@ -4,23 +4,29 @@ const ScoreTable = props => {
 
   return (
     <table>
-      <tbody>
-        <tr>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Time</th>
-        </tr>
-        {scores ? scores.map((score, index) => {
-          return (
-            <tr key={index} className={even(index) ? "score even" : "score"}>
-              <td>{index + 1}</td>
-              <td>{score.name}</td>
-              <td>{formattedTime(score.seconds)}</td>
-            </tr>
-          )
-        })
-          : null}
-      </tbody>
+      {scores ?
+        <tbody>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Time</th>
+          </tr>
+          {scores ? scores.map((score, index) => {
+            return (
+              <tr key={index} className={even(index) ? "score even" : "score"}>
+                <td>{index + 1}</td>
+                <td>{score.name}</td>
+                <td>{formattedTime(score.seconds)}</td>
+              </tr>
+            )
+          })
+            : null}
+        </tbody>
+        :
+        <tbody>
+          <tr><td>No scores yet</td></tr>
+        </tbody>
+      }
     </table>
   )
 }
