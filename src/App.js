@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Home mapNames={mapNames} />} />
           <Route path="/beach" element={<Game mapName="beach" formattedTime={formattedTime} />} />
           <Route path="/leaderboard" element={<Leaderboard mapNames={mapNames} formattedTime={formattedTime} />} />
         </Routes>
