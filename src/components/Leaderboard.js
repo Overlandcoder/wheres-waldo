@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ScoreTable from "./ScoreTable";
 
 const Leaderboard = props => {
   const topAmount = 10;
@@ -14,19 +15,19 @@ const Leaderboard = props => {
     getTopScores();
   }, []);
 
-  const { formattedTime } = props;
+  const { mapNames, formattedTime } = props;
 
   return (
     <div className="leaderboard">
-      <h2>Top {topAmount} Scores</h2>
-      {topScores ? topScores.beach.map((score, index) => {
+      <h1 className="border-bottom-yellow">Top {topAmount} Scores</h1>
+      {mapNames.map((mapName, index) => {
         return (
-          <div key={index} className="score">
-            <div>{index + 1}. {score.name} - {formattedTime(score.seconds)}</div>
+          <div key={index} className="text-center">
+            <h3 className="map-name">{mapName}</h3>
+            <ScoreTable scores={topScores} formattedTime={formattedTime} />
           </div>
         )
-      })
-        : null}
+      })}
     </div>
   )
 }

@@ -103,14 +103,14 @@ nav {
   color: #81e4da;
   text-decoration: none;
   list-style: none;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   transition: 0.4s;
 }
 
 .nav-link:after {
   display: block;
   content: '';
-  border-bottom: solid 3px rgb(246, 231, 23);
+  border-bottom: 3px solid rgb(246, 231, 23);
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
@@ -134,12 +134,15 @@ nav ul {
 .home-heading {
   color: #2f4858;
   padding-bottom: 2px;
+}
+
+.border-bottom-yellow {
   border-bottom: 3px solid rgb(246, 231, 23);
 }
 
 .beach-link {
-  margin-top: 1.5rem;
   max-width: 30rem;
+  margin-top: 0.5rem;
   border-radius: 15px;
   box-shadow: 0px 2px 5px 0px #2f4858;
   transition: 0.2s;
@@ -241,9 +244,39 @@ form label {
   align-items: center;
   gap: 1rem;
   margin-top: 3rem;
+  color: rgb(53, 53, 53);
 }
 
-.score {
+.map-name {
+  color: #ffffff;
+  background-color: #5fb1a9;
+  padding: 10px 0;
+  margin-top: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+table {
+  min-width: 20vw;
+  box-shadow: 0px 1px 3px 0px #c9c9c9;
+  border-radius: 5px;
+}
+
+th, td {
+  padding: 10px;
+}
+
+.even {
+  background-color: #f1f1f1;
+}
+
+.map-home {
+  margin-top: 1.5rem;
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-home {
+  color: #2f4858;
 }
