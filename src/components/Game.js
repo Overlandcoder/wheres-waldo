@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import beachWallpaper from "../images/waldo_beach.jpg";
 import waldo from "../images/waldo.jpg";
 import wizard from "../images/wizard.jpg";
 import odlaw from "../images/odlaw.jpg";
@@ -7,7 +6,7 @@ import wilma from "../images/wilma.jpg";
 import Popup from "./Popup";
 
 const Game = props => {
-  const { mapName, formattedTime } = props;
+  const { map, formattedTime } = props;
   const [seconds, setSeconds] = useState(0);
   const [charsFound, setCharsFound] = useState({
     waldo: false, wizard: false, odlaw: false, wilma: false
@@ -42,7 +41,7 @@ const Game = props => {
   }, [gameOver, seconds]);
 
   const saveScore = async () => {
-    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}&map_name=${mapName}`,
+    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}&map_name=${map.name}`,
       { method: "post" });
     const data = await response.json();
     if (data["message"] === `Score saved for ${name}`) {
@@ -59,7 +58,7 @@ const Game = props => {
     const x = (event.pageX / imgWidth).toFixed(4);
     const y = (event.pageY / imgHeight).toFixed(4);
 
-    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map_name=${mapName}`);
+    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map_name=${map.name}`);
     const data = await response.json();
     if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
   }
@@ -95,7 +94,7 @@ const Game = props => {
           : null
         }
       </div>
-      <img src={beachWallpaper} onClick={handleClick} alt="beach wallpaper for a game of where's waldo" className="wallpaper"></img>
+      <img src={map.image} onClick={handleClick} alt="beach wallpaper for a game of where's waldo" className="wallpaper"></img>
     </div>
   )
 }
