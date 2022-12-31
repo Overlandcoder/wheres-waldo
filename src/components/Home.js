@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Home = props => {
-  const { maps, handleClick } = props;
+  const { maps } = props;
 
   return (
     <div className="home">
@@ -10,7 +10,7 @@ const Home = props => {
         return (
           <div key={index} className="map-home">
             <h2 className="capitalize">{map.name}</h2>
-            <Link to={`/${map.name}`} onClick={() => handleClick(map)}>
+            <Link to={`/${map.name}`}>
               <img src={map.image} className="beach-link" alt="where's waldo beach map"></img>
             </Link>
           </div>)
