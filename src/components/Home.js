@@ -10,8 +10,8 @@ const Home = props => {
         return (
           <div key={index} className="map-home">
             <h2 className="capitalize">{map.name}</h2>
-            <Link to={`/${map.name}`}>
-              <img src={map.image} className="beach-link" alt="where's waldo beach map"></img>
+            <Link to={`/wheres_waldo/${map.name}`}>
+              <img src={map.image} className="map-link" alt="where's waldo map"></img>
             </Link>
           </div>)
       })}
