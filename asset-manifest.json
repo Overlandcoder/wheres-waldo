@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/wheres_waldo/static/css/main.734d0359.css",
-    "main.js": "/wheres_waldo/static/js/main.3adea976.js",
-    "static/media/beach_image.jpg": "/wheres_waldo/static/media/beach_image.860e63ec06dfcc734a06.jpg",
-    "static/media/space_image.jpg": "/wheres_waldo/static/media/space_image.147868e5530a0ca42781.jpg",
-    "static/media/ski_image.jpg": "/wheres_waldo/static/media/ski_image.1dbfac2aff744092aa89.jpg",
-    "static/media/waldo.jpg": "/wheres_waldo/static/media/waldo.59e7b691e9225089d63f.jpg",
-    "index.html": "/wheres_waldo/index.html",
-    "main.734d0359.css.map": "/wheres_waldo/static/css/main.734d0359.css.map",
-    "main.3adea976.js.map": "/wheres_waldo/static/js/main.3adea976.js.map"
+    "main.css": "/waldo/static/css/main.734d0359.css",
+    "main.js": "/waldo/static/js/main.c21a9e22.js",
+    "static/media/beach_image.jpg": "/waldo/static/media/beach_image.860e63ec06dfcc734a06.jpg",
+    "static/media/space_image.jpg": "/waldo/static/media/space_image.147868e5530a0ca42781.jpg",
+    "static/media/ski_image.jpg": "/waldo/static/media/ski_image.1dbfac2aff744092aa89.jpg",
+    "static/media/waldo.jpg": "/waldo/static/media/waldo.59e7b691e9225089d63f.jpg",
+    "index.html": "/waldo/index.html",
+    "main.734d0359.css.map": "/waldo/static/css/main.734d0359.css.map",
+    "main.c21a9e22.js.map": "/waldo/static/js/main.c21a9e22.js.map"
   },
   "entrypoints": [
     "static/css/main.734d0359.css",
-    "static/js/main.3adea976.js"
+    "static/js/main.c21a9e22.js"
   ]
 }
