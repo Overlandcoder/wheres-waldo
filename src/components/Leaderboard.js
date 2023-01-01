@@ -7,7 +7,7 @@ const Leaderboard = props => {
 
   useEffect(() => {
     const getTopScores = async () => {
-      const response = await fetch(`https://overlandcoder.github.io/wheres_waldo/api/top_scores?&amount=${topAmount}`);
+      const response = await fetch(`https://wheres-waldo-service.onrender.com/api/top_scores?&amount=${topAmount}`);
       const data = await response.json();
       setTopScores(data.top_scores);
     }
