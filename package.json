@@ -1,8 +1,8 @@
 {
-  "name": "wheres_waldo",
+  "name": "wheres-waldo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://overlandcoder.github.io/wheres_waldo",
+  "homepage": "http://overlandcoder.github.io/wheres-waldo",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
