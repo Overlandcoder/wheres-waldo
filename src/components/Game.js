@@ -41,7 +41,7 @@ const Game = props => {
   }, [gameOver, seconds]);
 
   const saveScore = async () => {
-    const response = await fetch(`http://localhost:3000/api/save_score?name=${name}&seconds=${seconds}&map_name=${map.name}`,
+    const response = await fetch(`https://wheres-waldo-service.onrender.com/api/save_score?name=${name}&seconds=${seconds}&map_name=${map.name}`,
       { method: "post" });
     const data = await response.json();
     if (data["message"] === `Score saved for ${name}`) {
@@ -58,7 +58,7 @@ const Game = props => {
     const x = (event.pageX / imgWidth).toFixed(4);
     const y = (event.pageY / imgHeight).toFixed(4);
 
-    const response = await fetch(`http://localhost:3000/api/check_guess?x=${x}&y=${y}&map_name=${map.name}`);
+    const response = await fetch(`https://wheres-waldo-service.onrender.com/api/check_guess?x=${x}&y=${y}&map_name=${map.name}`, { mode: "cors" });
     const data = await response.json();
     if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
   }
