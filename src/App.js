@@ -22,9 +22,9 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
-          <Route path="/wheres_waldo" exact element={<Home maps={maps} />} />
-          {maps.map((map, index) => <Route path={`/wheres_waldo/${map.name}`} key={index} element={<Game map={map} formattedTime={formattedTime} />} />)}
-          <Route path="/wheres_waldo/leaderboard" element={<Leaderboard maps={maps} formattedTime={formattedTime} />} />
+          <Route path="/wheres-waldo" exact element={<Home maps={maps} />} />
+          {maps.map((map, index) => <Route path={`/wheres-waldo/${map.name}`} key={index} element={<Game map={map} formattedTime={formattedTime} />} />)}
+          <Route path="/wheres-waldo/leaderboard" element={<Leaderboard maps={maps} formattedTime={formattedTime} />} />
         </Routes>
       </div>
     </Router>
