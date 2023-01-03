@@ -59,7 +59,6 @@ const Game = props => {
     const y = (event.pageY / imgHeight).toFixed(4);
 
     const response = await fetch(`https://wheres-waldo-service.onrender.com/api/check_guess?x=${x}&y=${y}&map_name=${map.name}`);
-    console.log(response)
     
     const data = await response.json();
     if (data["found"] !== "none") setCharsFound({ ...charsFound, [data["found"]]: true });
