@@ -5,7 +5,7 @@ const Home = props => {
 
   return (
     <div className="home">
-      <h1 className="home-heading border-bottom-yellow">Choose a map</h1>
+      <h1 className="dark-blue-heading border-bottom-yellow">Choose a map</h1>
       {maps.map((map, index) => {
         return (
           <div key={index} className="map-home">

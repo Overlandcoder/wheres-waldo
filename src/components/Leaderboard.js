@@ -19,7 +19,7 @@ const Leaderboard = props => {
 
   return (
     <div className="leaderboard">
-      <h1 className="border-bottom-yellow">Top {topAmount} Scores</h1>
+      <h1 className="dark-blue-heading border-bottom-yellow">Top {topAmount} Scores</h1>
       {maps.map((map, index) => {
         return (
           <div key={index} className="text-center">
