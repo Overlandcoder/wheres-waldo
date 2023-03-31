@@ -24,7 +24,7 @@ const ScoreTable = props => {
         </tbody>
         :
         <tbody>
-          <tr><td>No scores yet</td></tr>
+          <tr><td>Loading...</td></tr>
         </tbody>
       }
     </table>
