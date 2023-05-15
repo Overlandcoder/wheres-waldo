@@ -14,12 +14,12 @@
 }
 
 .characters img {
-  max-height: 6rem;
-  width: 4rem;
+  max-height: 100px;
+  width: 100px;
 }
 
 .characters > * {
-  margin: 0.8rem 0px;
+  margin: 15px 0px;
 }
 
 .characters {
