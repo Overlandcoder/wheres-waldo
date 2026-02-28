@@ -18,6 +18,9 @@
     "url": "https://github.com/Overlandcoder/wheres-waldo/issues"
   },
   "homepage": "https://github.com/Overlandcoder/wheres-waldo#readme",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "dependencies": {
     "@prisma/client": "^6.19.2",
     "dotenv": "^17.3.1",
