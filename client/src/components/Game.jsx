@@ -2,6 +2,7 @@ import "./Game.css"
 import { useRef, useState } from "react"
 
 function Game({ mapName, imageUrl }) {
+  const [clickPos, setClickPos] = useState(null);
   const imageRef = useRef(null);
 
   const handleClick = (event) => {
@@ -10,7 +11,7 @@ function Game({ mapName, imageUrl }) {
     const yPixel = event.clientY - rect.top;
     const xPercent = (xPixel / rect.width) * 100;
     const yPercent = (yPixel / rect.height) * 100;
-    console.log(xPercent, yPercent)
+    setClickPos({ x: xPercent, y: yPercent });
   }
 
   return (
@@ -22,6 +23,15 @@ function Game({ mapName, imageUrl }) {
         alt={mapName}
         onClick={handleClick}
       />
+      {clickPos && (
+        <div
+          className="target-box"
+          style={{
+            left: `${clickPos.x}%`,
+            top: `${clickPos.y}%`
+          }}
+        />
+      )}
     </div>
   )
 }
