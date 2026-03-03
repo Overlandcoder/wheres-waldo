@@ -1,0 +1,19 @@
+.App {
+  margin: 0;
+  padding: 0;
+}
+
+.game-container {
+  border: 4px solid #333;
+}
+
+.game-image {
+  max-width: 100%;
+  cursor: crosshair;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  background-color: white;
+}
