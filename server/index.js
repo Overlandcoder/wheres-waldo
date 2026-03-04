@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/api/validate", async (req, res) => {
-  const { characterName, x, y } = req.body;
+  const { x, y, characterName } = req.body;
 
   try {
-    const character = await prisma.character.findUnique({
-      where: { name: characterName },
+    const character = await prisma.character.findFirst({
+      where: { name: { equals: characterName, mode: "insensitive" } },
     });
 
     if (!character) {
