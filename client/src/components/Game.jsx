@@ -4,7 +4,7 @@ const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
 
 function Game({ mapName, imageUrl }) {
   const [clickPos, setClickPos] = useState(null);
-  // const [charsFound, setCharsFound] = useState([]);
+  const [charsFound, setCharsFound] = useState([]);
   const imageRef = useRef(null);
 
   const handleImageClick = async (event) => {
@@ -34,6 +34,7 @@ function Game({ mapName, imageUrl }) {
       console.log("Backend response:", data);
       if (data.found) {
         alert("Waldo found");
+        setCharsFound([...charsFound, characterName]);
       }
     } catch (error) {
       console.error("Server error:", error.message);
@@ -46,6 +47,9 @@ function Game({ mapName, imageUrl }) {
   const selectionMenuStyle = clickPos
     ? { left: `${clickPos.x + 2}%`, top: `${clickPos.y}%` }
     : {};
+  const remainingCharacters = CHARACTERS.filter(
+    (char) => !charsFound.includes(char)
+  );
 
   return (
     <div className="game-container">
@@ -60,7 +64,7 @@ function Game({ mapName, imageUrl }) {
         <>
           <div className="target-box" style={targetBoxStyle} />
           <div className="selection-menu" style={selectionMenuStyle}>
-            {CHARACTERS.map((char) => (
+            {remainingCharacters.map((char) => (
               <button key={char} onClick={() => handleCharSelection(char)}>
                 {char}
               </button>
