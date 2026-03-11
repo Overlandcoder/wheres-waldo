@@ -4,7 +4,7 @@ const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
 
 function Game({ mapName, imageUrl }) {
   const [clickPos, setClickPos] = useState(null);
-  const [charsFound, setCharsFound] = useState([]);
+  const [foundCharacters, setFoundCharacters] = useState([]);
   const imageRef = useRef(null);
 
   const handleImageClick = async (event) => {
@@ -34,8 +34,12 @@ function Game({ mapName, imageUrl }) {
       console.log("Backend response:", data);
       if (data.found) {
         alert("Waldo found");
-        setCharsFound([...charsFound, characterName]);
+        setFoundCharacters([
+          ...foundCharacters,
+          { name: characterName, ...clickPos },
+        ]);
       }
+      setClickPos(null);
     } catch (error) {
       console.error("Server error:", error.message);
     }
@@ -48,7 +52,7 @@ function Game({ mapName, imageUrl }) {
     ? { left: `${clickPos.x + 2}%`, top: `${clickPos.y}%` }
     : {};
   const remainingCharacters = CHARACTERS.filter(
-    (char) => !charsFound.includes(char)
+    (char) => !foundCharacters.includes(char)
   );
 
   return (
@@ -60,6 +64,13 @@ function Game({ mapName, imageUrl }) {
         alt={mapName}
         onClick={handleImageClick}
       />
+      {foundCharacters.map((char) => (
+        <div
+          className="found-box"
+          key="char"
+          style={{ left: `${char.x}%`, top: `${char.y}%` }}
+        ></div>
+      ))}
       {clickPos && (
         <>
           <div className="target-box" style={targetBoxStyle} />

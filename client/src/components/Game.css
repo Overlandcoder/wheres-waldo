@@ -20,18 +20,29 @@ h1 {
   background-color: white;
 }
 
-.target-box {
+.target-box,
+.found-box {
   position: absolute;
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  border: 4px solid #ff1e1e;
   border-radius: 50%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.target-box {
+  border: 4px solid #ff1e1e;
   background-color: rgba(255, 0, 0, 0.15);
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.5);
   animation: pulse 1.5s infinite;
-  pointer-events: none;
-  z-index: 100;
+}
+
+.found-box {
+  border: 4px solid #35ab0b;
+  background-color: rgba(43, 255, 0, 0.05);
+  box-shadow: 0 0 15px rgba(0, 255, 38, 0.8),
+    inset 0 0 10px rgba(60, 255, 0, 0.5);
 }
 
 @keyframes pulse {
