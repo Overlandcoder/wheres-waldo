@@ -1,11 +1,30 @@
 import "./Game.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
+
+const formatTime = (totalSeconds) => {
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  return `${mins.toString().padStart(2, "0")}:${secs
+    .toString()
+    .padStart(2, "0")}`;
+};
 
 function Game({ mapName, imageUrl }) {
   const [clickPos, setClickPos] = useState(null);
   const [foundCharacters, setFoundCharacters] = useState([]);
+  const [seconds, setSeconds] = useState(0);
   const imageRef = useRef(null);
+
+  useEffect(() => {
+    if (foundCharacters.length === CHARACTERS.length) return;
+
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [foundCharacters.length]);
 
   const handleImageClick = async (event) => {
     const rect = imageRef.current.getBoundingClientRect();
@@ -57,6 +76,18 @@ function Game({ mapName, imageUrl }) {
 
   return (
     <div className="game-container">
+      <div className="game-header">
+        <div className="game-stats">
+          <span className="label">TIME</span>
+          <span className="value">{formatTime(seconds)}</span>
+        </div>
+        <div className="game-stats">
+          <span className="label">FOUND</span>
+          <span className="value">
+            {foundCharacters.length} / {CHARACTERS.length}
+          </span>
+        </div>
+      </div>
       <img
         ref={imageRef}
         src={imageUrl}
