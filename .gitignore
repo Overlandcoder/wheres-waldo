@@ -2,6 +2,7 @@ node_modules/
 client/node_modules/
 server/node_modules/
 server/generated/
+/generated/
 .env
 server/.env
 dist/

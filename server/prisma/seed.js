@@ -1,13 +1,41 @@
-const { PrismaClient } = require('../generated/prisma');
+const { PrismaClient } = require("../generated/prisma");
 const prisma = new PrismaClient();
 
 async function main() {
   await prisma.character.createMany({
     data: [
-      { name: 'Waldo', x_left: 60.5, x_right: 63.5, y_top: 36.0, y_bottom: 41.5 },
-      { name: 'Odlaw', x_left: 76.0, x_right: 78.5, y_top: 39.5, y_bottom: 42.5 },
+      {
+        name: "Waldo",
+        x_left: 60.5,
+        x_right: 63.5,
+        y_top: 36.0,
+        y_bottom: 41.5,
+      },
+      {
+        name: "Wilma",
+        x_left: 76.0,
+        x_right: 78.5,
+        y_top: 39.5,
+        y_bottom: 42.5,
+      },
+      {
+        name: "Odlaw",
+        x_left: 10.44,
+        x_right: 10.96,
+        y_top: 34.79,
+        y_bottom: 38.37,
+      },
+      {
+        name: "Wizard",
+        x_left: 26.41,
+        x_right: 27.77,
+        y_top: 34.47,
+        y_bottom: 37.72,
+      },
     ],
   });
 }
 
-main().catch(e => console.error(e)).finally(() => prisma.$disconnect());
+main()
+  .catch((e) => console.error(e))
+  .finally(() => prisma.$disconnect());
