@@ -52,7 +52,6 @@ function Game({ mapName, imageUrl }) {
       const data = await response.json();
       console.log("Backend response:", data);
       if (data.found) {
-        alert("Waldo found");
         setFoundCharacters([
           ...foundCharacters,
           { name: characterName, ...clickPos },
@@ -88,38 +87,43 @@ function Game({ mapName, imageUrl }) {
           </span>
         </div>
       </div>
-      <img
-        ref={imageRef}
-        src={imageUrl}
-        className="game-image"
-        alt={mapName}
-        onClick={handleImageClick}
-      />
-      {foundCharacters.map((char) => (
-        <div
-          className="found-box"
-          key="char"
-          style={{ left: `${char.x}%`, top: `${char.y}%` }}
-        ></div>
-      ))}
-      {clickPos && (
-        <>
-          <div className="target-box" style={targetBoxStyle} />
-          <div className="selection-menu" style={selectionMenuStyle}>
-            {remainingCharacters.map((char) => (
-              <button key={char} onClick={() => handleCharSelection(char)}>
-                {char}
+      <div
+        className="image-wrapper"
+        style={{ position: "relative", display: "inline-block" }}
+      >
+        <img
+          ref={imageRef}
+          src={imageUrl}
+          className="game-image"
+          alt={mapName}
+          onClick={handleImageClick}
+        />
+        {foundCharacters.map((char) => (
+          <div
+            className="found-box"
+            key="char"
+            style={{ left: `${char.x}%`, top: `${char.y}%` }}
+          ></div>
+        ))}
+        {clickPos && (
+          <>
+            <div className="target-box" style={targetBoxStyle} />
+            <div className="selection-menu" style={selectionMenuStyle}>
+              {remainingCharacters.map((char) => (
+                <button key={char} onClick={() => handleCharSelection(char)}>
+                  {char}
+                </button>
+              ))}
+              <button
+                onClick={() => setClickPos(null)}
+                style={{ color: "#999", fontSize: "0.8rem" }}
+              >
+                Cancel
               </button>
-            ))}
-            <button
-              onClick={() => setClickPos(null)}
-              style={{ color: "#999", fontSize: "0.8rem" }}
-            >
-              Cancel
-            </button>
-          </div>
-        </>
-      )}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
