@@ -14,6 +14,11 @@ function Game({ mapName, imageUrl }) {
   const [clickPos, setClickPos] = useState(null);
   const [foundCharacters, setFoundCharacters] = useState([]);
   const [seconds, setSeconds] = useState(0);
+  const [clickFeedback, setClickFeedback] = useState({
+    message: "",
+    type: "",
+    visible: false,
+  });
   const imageRef = useRef(null);
 
   useEffect(() => {
@@ -56,11 +61,22 @@ function Game({ mapName, imageUrl }) {
           ...foundCharacters,
           { name: characterName, ...clickPos },
         ]);
+        showClickFeedback(`${characterName} has been found!`, "success");
+      } else {
+        showClickFeedback("Nope, try again!", "failure");
       }
       setClickPos(null);
     } catch (error) {
       console.error("Server error:", error.message);
     }
+  };
+
+  const showClickFeedback = (message, type) => {
+    setClickFeedback({ message, type, visible: true });
+
+    setTimeout(() => {
+      setClickFeedback((prev) => ({ ...prev, visible: false }));
+    }, 2500);
   };
 
   const targetBoxStyle = clickPos
@@ -70,7 +86,7 @@ function Game({ mapName, imageUrl }) {
     ? { left: `${clickPos.x + 2}%`, top: `${clickPos.y}%` }
     : {};
   const remainingCharacters = CHARACTERS.filter(
-    (char) => !foundCharacters.includes(char)
+    (char) => !foundCharacters.some((foundChar) => foundChar.name === char)
   );
 
   return (
@@ -101,7 +117,7 @@ function Game({ mapName, imageUrl }) {
         {foundCharacters.map((char) => (
           <div
             className="found-box"
-            key="char"
+            key={char.name}
             style={{ left: `${char.x}%`, top: `${char.y}%` }}
           ></div>
         ))}
@@ -124,6 +140,11 @@ function Game({ mapName, imageUrl }) {
           </>
         )}
       </div>
+      {clickFeedback.visible && (
+        <div className={`feedback-notification ${clickFeedback.type}`}>
+          {clickFeedback.message}
+        </div>
+      )}
     </div>
   );
 }

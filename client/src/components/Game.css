@@ -126,3 +126,44 @@ h1 {
 .game-stats:last-child .value {
   color: #35ab0b;
 }
+
+.feedback-notification {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 4px solid #fff;
+  color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInOut 2.5s ease-in-out;
+}
+
+.feedback-notification.success {
+  background-color: #4caf50;
+}
+.feedback-notification.failure {
+  background-color: #f44336;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
