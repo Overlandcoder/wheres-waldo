@@ -2,9 +2,9 @@ import "./Game.css";
 import { useEffect, useRef, useState } from "react";
 const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
 
-const formatTime = (totalSeconds) => {
-  const mins = Math.floor(totalSeconds / 60);
-  const secs = totalSeconds % 60;
+const formatTime = (totalSecondsElapsed) => {
+  const mins = Math.floor(totalSecondsElapsed / 60);
+  const secs = totalSecondsElapsed % 60;
   return `${mins.toString().padStart(2, "0")}:${secs
     .toString()
     .padStart(2, "0")}`;
@@ -13,7 +13,7 @@ const formatTime = (totalSeconds) => {
 function Game({ mapName, imageUrl }) {
   const [clickPos, setClickPos] = useState(null);
   const [foundCharacters, setFoundCharacters] = useState([]);
-  const [seconds, setSeconds] = useState(0);
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [clickFeedback, setClickFeedback] = useState({
     message: "",
     type: "",
@@ -25,7 +25,7 @@ function Game({ mapName, imageUrl }) {
     if (foundCharacters.length === CHARACTERS.length) return;
 
     const interval = setInterval(() => {
-      setSeconds((prev) => prev + 1);
+      setSecondsElapsed((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -94,7 +94,7 @@ function Game({ mapName, imageUrl }) {
       <div className="game-header">
         <div className="game-stats">
           <span className="label">TIME</span>
-          <span className="value">{formatTime(seconds)}</span>
+          <span className="value">{formatTime(secondsElapsed)}</span>
         </div>
         <div className="game-stats">
           <span className="label">FOUND</span>
