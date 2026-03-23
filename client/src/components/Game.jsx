@@ -33,6 +33,11 @@ function Game({ mapName, imageUrl }) {
   }, [foundCharacters.length]);
 
   const handleImageClick = async (event) => {
+    if (clickPos) {
+      setClickPos(null);
+      return;
+    }
+
     const rect = imageRef.current.getBoundingClientRect();
     const xPixel = event.clientX - rect.left;
     const yPixel = event.clientY - rect.top;
