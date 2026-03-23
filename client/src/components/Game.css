@@ -22,6 +22,10 @@ h1 {
   color: #333;
 }
 
+h2 {
+  margin: 0;
+}
+
 .target-box,
 .found-box {
   position: absolute;
@@ -166,4 +170,51 @@ h1 {
     opacity: 0;
     transform: translate(-50%, -10px);
   }
+}
+
+.game-won-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.game-won-modal {
+  background: white;
+  padding: 30px 60px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-won-modal h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.game-won-modal p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.game-won-modal button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #35ab0b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.game-won-modal button:hover {
+  background-color: #277d07;
 }

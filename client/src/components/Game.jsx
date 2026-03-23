@@ -19,6 +19,7 @@ function Game({ mapName, imageUrl }) {
     type: "",
     visible: false,
   });
+  const [isGameWon, setIsGameWon] = useState(false);
   const imageRef = useRef(null);
 
   useEffect(() => {
@@ -61,6 +62,9 @@ function Game({ mapName, imageUrl }) {
           ...foundCharacters,
           { name: characterName, ...clickPos },
         ]);
+        if (foundCharacters.length + 1 === CHARACTERS.length) {
+          setIsGameWon(true);
+        }
         showClickFeedback(`${characterName} has been found!`, "success");
       } else {
         showClickFeedback("Nope, try again!", "failure");
@@ -143,6 +147,23 @@ function Game({ mapName, imageUrl }) {
       {clickFeedback.visible && (
         <div className={`feedback-notification ${clickFeedback.type}`}>
           {clickFeedback.message}
+        </div>
+      )}
+      {isGameWon && (
+        <div className="game-won-overlay">
+          <div className="game-won-modal">
+            <h2>You did it!</h2>
+            <p>You found 'em all in {formatTime(secondsElapsed)}</p>
+
+            <div className="game-won-footer">
+              <button
+                className="play-again-btn"
+                onClick={() => window.location.reload()}
+              >
+                Play Again
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
