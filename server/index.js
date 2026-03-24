@@ -49,5 +49,17 @@ app.post("/api/leaderboard", async (req, res) => {
   }
 });
 
+app.get("/api/leaderboard", async (req, res) => {
+  try {
+    const topScores = await prisma.score.findMany({
+      orderBy: { seconds: "asc" },
+      take: 10,
+    });
+    res.json(topScores);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch leaderboard" });
+  }
+});
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -26,7 +26,8 @@ h1 {
   color: #333;
 }
 
-h2 {
+h2,
+h3 {
   margin: 0;
 }
 
@@ -217,6 +218,10 @@ h2 {
   cursor: pointer;
 }
 
+.game-won-footer {
+  margin-top: 25px;
+}
+
 .leaderboard-form {
   display: flex;
   flex-direction: column;
@@ -260,14 +265,37 @@ h2 {
   background-color: #277d07;
 }
 
-.modal-divider {
-  border: 0;
-  border-top: 1px solid #b9b9b9;
-  margin: 25px 0;
-  width: 100%;
-}
-
 .success-msg {
   color: #35ab0b;
   font-weight: bold;
+}
+
+.leaderboard-container {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: colllapse;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.leaderboard-table th {
+  text-align: left;
+  color: #888;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.leaderboard-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.leaderboard-table tr:nth-child(-n + 3) td:first-child {
+  font-weight: bold;
+  color: #35ab0b;
 }

@@ -1,4 +1,5 @@
 import "./Game.css";
+import Leaderboard from "./Leaderboard";
 import { useEffect, useRef, useState } from "react";
 const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
 
@@ -196,8 +197,7 @@ function Game({ mapName, imageUrl }) {
             ) : (
               <p className="success-msg">Score submitted.</p>
             )}
-
-            <hr className="modal-divider" />
+            {isScoreSubmitted && <Leaderboard />}
 
             <div className="game-won-footer">
               <button
