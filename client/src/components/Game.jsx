@@ -20,6 +20,8 @@ function Game({ mapName, imageUrl }) {
     visible: false,
   });
   const [isGameWon, setIsGameWon] = useState(false);
+  const [playerName, setPlayerName] = useState("");
+  const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
   const imageRef = useRef(null);
 
   useEffect(() => {
@@ -86,6 +88,23 @@ function Game({ mapName, imageUrl }) {
     setTimeout(() => {
       setClickFeedback((prev) => ({ ...prev, visible: false }));
     }, 2500);
+  };
+
+  const handleScoreSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/leaderboard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: playerName,
+          time: secondsElapsed,
+          map: mapName,
+        }),
+      });
+      if (response.ok) setIsScoreSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting score", error);
+    }
   };
 
   const targetBoxStyle = clickPos
@@ -159,6 +178,27 @@ function Game({ mapName, imageUrl }) {
           <div className="game-won-modal">
             <h2>You did it!</h2>
             <p>You found 'em all in {formatTime(secondsElapsed)}</p>
+
+            {!isScoreSubmitted ? (
+              <div className="leaderboard-form">
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  value={playerName}
+                  onChange={(e) => setPlayerName(e.target.value)}
+                />
+                <button
+                  className="submit-score-btn"
+                  onClick={handleScoreSubmit}
+                >
+                  Submit Score
+                </button>
+              </div>
+            ) : (
+              <p>Score submitted.</p>
+            )}
+
+            <hr className="modal-divider" />
 
             <div className="game-won-footer">
               <button
