@@ -266,3 +266,8 @@ h2 {
   margin: 25px 0;
   width: 100%;
 }
+
+.success-msg {
+  color: #35ab0b;
+  font-weight: bold;
+}

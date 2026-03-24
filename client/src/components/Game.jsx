@@ -98,7 +98,6 @@ function Game({ mapName, imageUrl }) {
         body: JSON.stringify({
           name: playerName,
           time: secondsElapsed,
-          map: mapName,
         }),
       });
       if (response.ok) setIsScoreSubmitted(true);
@@ -195,7 +194,7 @@ function Game({ mapName, imageUrl }) {
                 </button>
               </div>
             ) : (
-              <p>Score submitted.</p>
+              <p className="success-msg">Score submitted.</p>
             )}
 
             <hr className="modal-divider" />
