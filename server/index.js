@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { PrismaClient } = require("./generated/prisma");
+const { PrismaClient } = require("./prisma/generated/prisma");
 
 const prisma = new PrismaClient();
 const app = express();
@@ -29,6 +29,23 @@ app.post("/api/validate", async (req, res) => {
     res.json({ found: charIsFound });
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+app.post("/api/leaderboard", async (req, res) => {
+  const { name, time } = req.body;
+
+  try {
+    const newScore = await prisma.score.create({
+      data: {
+        playerName: name,
+        seconds: time,
+      },
+    });
+    res.status(201).json(newScore);
+  } catch (error) {
+    console.error("Prisma Error:", error);
+    res.status(500).json({ error: "Failed to save score" });
   }
 });
 

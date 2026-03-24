@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../../generated/prisma"
+  output   = "./generated/prisma"
 }
 
 datasource db {
@@ -15,10 +15,19 @@ datasource db {
 }
 
 model Character {
-  id        Int    @id @default(autoincrement())
-  name      String @unique
-  x_left    Float
-  x_right   Float
-  y_top     Float
-  y_bottom  Float
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  x_left   Float
+  x_right  Float
+  y_top    Float
+  y_bottom Float
+}
+
+model Score {
+  id         Int      @id @default(autoincrement())
+  playerName String
+  seconds    Int
+  createdAt  DateTime @default(now())
+
+  @@index([seconds])
 }
