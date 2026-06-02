@@ -1,0 +1,9 @@
+node_modules/
+client/node_modules/
+server/node_modules/
+server/prisma/generated/
+/generated/
+.env
+server/.env
+dist/
+client/dist/
