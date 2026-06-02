@@ -70,7 +70,7 @@ function Game({ mapName, imageUrl }) {
       if (!response.ok) throw new Error(`Status: ${response.status}`);
 
       const data = await response.json();
-      console.log("Backend response:", data);
+
       if (data.found) {
         setFoundCharacters([
           ...foundCharacters,
