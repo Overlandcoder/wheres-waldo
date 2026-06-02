@@ -3,7 +3,7 @@ import Leaderboard from "./Leaderboard";
 import { useEffect, useRef, useState } from "react";
 const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
 const API_BASE_URL = import.meta.env.PROD
-  ? "https://wheres-waldo-production-20b5.up.railway.app/"
+  ? "https://wheres-waldo-production-20b5.up.railway.app"
   : "http://localhost:3000";
 
 const formatTime = (totalSecondsElapsed) => {
