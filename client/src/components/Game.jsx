@@ -41,9 +41,12 @@ function Game({ mapName, imageUrl }) {
       return;
     }
 
+    // get image position relative to the window
     const rect = imageRef.current.getBoundingClientRect();
+    // get click position relative to the image instead of the window
     const xPixel = event.clientX - rect.left;
     const yPixel = event.clientY - rect.top;
+
     const xPercent = (xPixel / rect.width) * 100;
     const yPercent = (yPixel / rect.height) * 100;
     setClickPos({ x: xPercent, y: yPercent });
@@ -158,10 +161,7 @@ function Game({ mapName, imageUrl }) {
                   {char}
                 </button>
               ))}
-              <button
-                onClick={() => setClickPos(null)}
-                style={{ color: "#999", fontSize: "0.8rem" }}
-              >
+              <button onClick={() => setClickPos(null)} className="cancel-btn">
                 Cancel
               </button>
             </div>
