@@ -2,6 +2,9 @@ import "./Game.css";
 import Leaderboard from "./Leaderboard";
 import { useEffect, useRef, useState } from "react";
 const CHARACTERS = ["Waldo", "Odlaw", "Wizard", "Wilma"];
+const API_BASE_URL = import.meta.env.PROD
+  ? "https://wheres-waldo-production-20b5.up.railway.app/"
+  : "http://localhost:3000";
 
 const formatTime = (totalSecondsElapsed) => {
   const mins = Math.floor(totalSecondsElapsed / 60);
@@ -54,7 +57,7 @@ function Game({ mapName, imageUrl }) {
 
   const handleCharSelection = async (characterName) => {
     try {
-      const response = await fetch("http://localhost:3000/api/validate", {
+      const response = await fetch(`${API_BASE_URL}/api/validate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -96,7 +99,7 @@ function Game({ mapName, imageUrl }) {
 
   const handleScoreSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/leaderboard", {
+      const response = await fetch(`${API_BASE_URL}/api/leaderboard`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
