@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+const API_BASE_URL = import.meta.env.PROD
+  ? "https://wheres-waldo-production-20b5.up.railway.app"
+  : "http://localhost:3000";
 
 function Leaderboard() {
   const [scores, setScores] = useState([]);
@@ -7,7 +10,7 @@ function Leaderboard() {
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/leaderboard");
+        const response = await fetch(`${API_BASE_URL}/api/leaderboard`);
         const data = await response.json();
         setScores(data);
       } catch (error) {
